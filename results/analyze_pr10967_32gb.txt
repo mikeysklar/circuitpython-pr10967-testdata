@@ -1,0 +1,128 @@
+Extracting SCSI commands from /Users/sklarm/Downloads/ada/captures/pr_32gb.pcap …
+       917 SCSI transactions extracted.
+
+============================================================
+ 1. Capture overview
+============================================================
+File name:           /Users/sklarm/Downloads/ada/captures/pr_32gb.pcap
+Number of packets:   2,090 k
+File size:           45 MB
+Capture duration:    111.252566100 seconds
+Data byte rate:      112 kBps
+                     Number of packets = 2090030
+
+============================================================
+ 2. SCSI commands by opcode + SCSI status
+============================================================
+  CNT   OPCODE                         STATUS
+  703   Read(10)                       Good
+  200   Test Unit Ready                Good
+    6   Inquiry                        Good
+    2   Request Sense                  Good
+    2   Read Capacity(10)              Good
+    2   Prevent/Allow Medium Removal   Check Condition
+    2   Mode Sense(6)                  Good
+
+  PREVENT_ALLOW behavior (Q1 — the headline PR question):
+    LUN 0x0 -> Check Condition
+    LUN 0x1 -> Check Condition
+
+============================================================
+ 3. Mount-phase identification (Q4 — slow-window cause)
+============================================================
+  Mount-phase cluster: t=1s .. t=17s  (~17s window)
+  Mount-cluster READ(10) total: 703
+
+============================================================
+ 4. Steady-state TUR rate (Q2 — polling cost baseline)
+============================================================
+  Sampling steady state from t=60s to t=111s (51.3s of data)
+
+  Per-LUN TUR counts in steady state:
+    LUN 0x0:    39 TUR  (0.76/s)
+    LUN 0x1:    39 TUR  (0.76/s)
+    ─────────────────────────
+    TOTAL:    78 TUR  (1.52/s)
+
+============================================================
+ 5. First 30s — opcode pivot (mount + cliff edge)
+============================================================
+  t(s)  Inquiry                 Mode Sense(6)           Prevent/Allow Medium Removal  Read Capacity(10)       Read(10)                Request Sense           Test Unit Ready       
+     0  4                       0                       0                       0                       0                       0                       4                     
+     1  2                       2                       2                       2                       73                      2                       2                     
+     2  0                       0                       0                       0                       38                      0                       2                     
+     3  0                       0                       0                       0                       39                      0                       2                     
+     4  0                       0                       0                       0                       38                      0                       2                     
+     5  0                       0                       0                       0                       40                      0                       2                     
+     6  0                       0                       0                       0                       40                      0                       2                     
+     7  0                       0                       0                       0                       41                      0                       2                     
+     8  0                       0                       0                       0                       40                      0                       2                     
+     9  0                       0                       0                       0                       41                      0                       2                     
+    10  0                       0                       0                       0                       38                      0                       2                     
+    11  0                       0                       0                       0                       37                      0                       2                     
+    12  0                       0                       0                       0                       39                      0                       2                     
+    13  0                       0                       0                       0                       38                      0                       2                     
+    14  0                       0                       0                       0                       39                      0                       2                     
+    15  0                       0                       0                       0                       39                      0                       2                     
+    16  0                       0                       0                       0                       41                      0                       2                     
+    17  0                       0                       0                       0                       42                      0                       2                     
+    18  0                       0                       0                       0                       0                       0                       2                     
+    19  0                       0                       0                       0                       0                       0                       2                     
+    20  0                       0                       0                       0                       0                       0                       2                     
+    21  0                       0                       0                       0                       0                       0                       2                     
+    22  0                       0                       0                       0                       0                       0                       2                     
+    23  0                       0                       0                       0                       0                       0                       2                     
+    24  0                       0                       0                       0                       0                       0                       2                     
+    25  0                       0                       0                       0                       0                       0                       2                     
+    26  0                       0                       0                       0                       0                       0                       2                     
+    27  0                       0                       0                       0                       0                       0                       2                     
+    28  0                       0                       0                       0                       0                       0                       2                     
+    29  0                       0                       0                       0                       0                       0                       2                     
+
+============================================================
+ 6. Steady-state sample (t=60–90s)
+============================================================
+  t(s)  Inquiry                 Mode Sense(6)           Prevent/Allow Medium Removal  Read Capacity(10)       Read(10)                Request Sense           Test Unit Ready       
+    60  0                       0                       0                       0                       0                       0                       2                     
+    61  0                       0                       0                       0                       0                       0                       2                     
+    62  0                       0                       0                       0                       0                       0                       2                     
+    63  0                       0                       0                       0                       0                       0                       2                     
+    64  0                       0                       0                       0                       0                       0                       2                     
+    65  0                       0                       0                       0                       0                       0                       2                     
+    66  0                       0                       0                       0                       0                       0                       2                     
+    67  0                       0                       0                       0                       0                       0                       2                     
+    68  0                       0                       0                       0                       0                       0                       2                     
+    69  0                       0                       0                       0                       0                       0                       2                     
+    70  0                       0                       0                       0                       0                       0                       2                     
+    71  0                       0                       0                       0                       0                       0                       2                     
+    72  0                       0                       0                       0                       0                       0                       2                     
+    73  0                       0                       0                       0                       0                       0                       2                     
+    74  0                       0                       0                       0                       0                       0                       2                     
+    75  0                       0                       0                       0                       0                       0                       2                     
+    76  0                       0                       0                       0                       0                       0                       2                     
+    77  0                       0                       0                       0                       0                       0                       2                     
+    78  0                       0                       0                       0                       0                       0                       2                     
+    79  0                       0                       0                       0                       0                       0                       2                     
+    80  0                       0                       0                       0                       0                       0                       2                     
+    81  0                       0                       0                       0                       0                       0                       2                     
+    82  0                       0                       0                       0                       0                       0                       2                     
+    83  0                       0                       0                       0                       0                       0                       2                     
+    84  0                       0                       0                       0                       0                       0                       2                     
+    85  0                       0                       0                       0                       0                       0                       2                     
+    86  0                       0                       0                       0                       0                       0                       2                     
+    87  0                       0                       0                       0                       0                       0                       2                     
+    88  0                       0                       0                       0                       0                       0                       2                     
+    89  0                       0                       0                       0                       0                       0                       2                     
+
+============================================================
+ 7. Cross-correlation with bench: results/cpu_only_bench_pr10967_32gb.txt
+============================================================
+  Bench cliff edge (last iter with cpu>500ms followed by cpu<300ms):
+    Bench transition: prev_iter cpu=358ms -> this iter cpu=229ms (line 43)
+  Bench cliff-edge timestamp (relative to bench start):
+    bench_t = 18.53
+  Bus-side cliff edge (last second of mount-phase READ(10) cluster):
+    pcap_t = 17s
+
+  Implied CircuitPython boot delay (pcap_t - bench_t): -1.53s
+  Q4 status: bench cliff at 18.53s + boot delay ≈ pcap cliff at 17s ✓

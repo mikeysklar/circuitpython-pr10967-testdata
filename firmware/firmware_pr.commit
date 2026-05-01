@@ -1,0 +1,7 @@
+258911e99be679c6cde31a34fe9dff29a47430a9
+258911e9 2026-04-27 (rebased onto 10.3.0-alpha.1 / 8e45cf1935)
+shared/usb: move SD card eject handler to the callback USB actually uses
+31bdbf253345d8abbdecc0ae700a7abc50486d78
+31bdbf25 2026-04-23
+shared/usb: reply unsupported to PREVENT_ALLOW on all LUNs
+

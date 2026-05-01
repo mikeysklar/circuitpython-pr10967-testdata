@@ -1,0 +1,15 @@
+# Decompressed pcaps (re-derive from .gz with gunzip -k)
+captures/*.pcap
+
+# macOS
+.DS_Store
+._*
+
+# Editor
+*.swp
+*~
+.vscode/
+.idea/
+
+# Temp files from analyze_pcap.sh
+scsi_tsv.*

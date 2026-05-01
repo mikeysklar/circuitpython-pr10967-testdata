@@ -1,0 +1,86 @@
+Extracting SCSI commands from /Users/sklarm/Downloads/ada/captures/main_32gb.pcap …
+       738 SCSI transactions extracted.
+
+============================================================
+ 1. Capture overview
+============================================================
+File name:           /Users/sklarm/Downloads/ada/captures/main_32gb.pcap
+Number of packets:   2,124 k
+File size:           46 MB
+Capture duration:    110.675494900 seconds
+Data byte rate:      116 kBps
+                     Number of packets = 2124190
+
+============================================================
+ 2. SCSI commands by opcode + SCSI status
+============================================================
+  CNT   OPCODE                         STATUS
+  717   Read(10)                       Good
+    6   Test Unit Ready                Good
+    6   Inquiry                        Good
+    2   Start Stop Unit                Good
+    2   Read Capacity(10)              Good
+    2   Prevent/Allow Medium Removal   Good
+    2   Mode Sense(6)                  Good
+    1   Write(10)                      Good
+
+  PREVENT_ALLOW behavior (Q1 — the headline PR question):
+    LUN 0x0 -> Good
+    LUN 0x1 -> Good
+
+============================================================
+ 3. Mount-phase identification (Q4 — slow-window cause)
+============================================================
+  Mount-phase cluster: t=1s .. t=18s  (~18s window)
+  Mount-cluster READ(10) total: 717
+
+============================================================
+ 4. Steady-state TUR rate (Q2 — polling cost baseline)
+============================================================
+  Sampling steady state from t=60s to t=110s (50.7s of data)
+
+  Per-LUN TUR counts in steady state:
+    ─────────────────────────
+    TOTAL:     0 TUR  (0.00/s)
+
+============================================================
+ 5. First 30s — opcode pivot (mount + cliff edge)
+============================================================
+  t(s)  Inquiry                 Mode Sense(6)           Prevent/Allow Medium Removal  Read Capacity(10)       Read(10)                Start Stop Unit         Test Unit Ready         Write(10)             
+     0  4                       0                       0                       0                       0                       0                       4                       0                     
+     1  2                       2                       2                       2                       78                      0                       2                       1                     
+     2  0                       0                       0                       0                       36                      0                       0                       0                     
+     3  0                       0                       0                       0                       39                      0                       0                       0                     
+     4  0                       0                       0                       0                       38                      0                       0                       0                     
+     5  0                       0                       0                       0                       40                      0                       0                       0                     
+     6  0                       0                       0                       0                       40                      0                       0                       0                     
+     7  0                       0                       0                       0                       41                      0                       0                       0                     
+     8  0                       0                       0                       0                       41                      0                       0                       0                     
+     9  0                       0                       0                       0                       40                      0                       0                       0                     
+    10  0                       0                       0                       0                       39                      0                       0                       0                     
+    11  0                       0                       0                       0                       38                      0                       0                       0                     
+    12  0                       0                       0                       0                       38                      0                       0                       0                     
+    13  0                       0                       0                       0                       39                      0                       0                       0                     
+    14  0                       0                       0                       0                       39                      0                       0                       0                     
+    15  0                       0                       0                       0                       39                      0                       0                       0                     
+    16  0                       0                       0                       0                       41                      0                       0                       0                     
+    17  0                       0                       0                       0                       41                      0                       0                       0                     
+    18  0                       0                       0                       0                       10                      0                       0                       0                     
+
+============================================================
+ 6. Steady-state sample (t=60–90s)
+============================================================
+  t(s)  Inquiry                 Mode Sense(6)           Prevent/Allow Medium Removal  Read Capacity(10)       Read(10)                Start Stop Unit         Test Unit Ready         Write(10)             
+
+============================================================
+ 7. Cross-correlation with bench: results/cpu_only_bench_main_32gb.txt
+============================================================
+  Bench cliff edge (last iter with cpu>500ms followed by cpu<300ms):
+    Bench transition: prev_iter cpu=466ms -> this iter cpu=276ms (line 36)
+  Bench cliff-edge timestamp (relative to bench start):
+    bench_t = 15.71
+  Bus-side cliff edge (last second of mount-phase READ(10) cluster):
+    pcap_t = 18s
+
+  Implied CircuitPython boot delay (pcap_t - bench_t): 2.29s
+  Q4 status: bench cliff at 15.71s + boot delay ≈ pcap cliff at 18s ✓
