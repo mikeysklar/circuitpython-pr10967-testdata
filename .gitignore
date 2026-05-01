@@ -1,5 +1,5 @@
-# Decompressed pcaps (re-derive from .gz with gunzip -k)
-captures/*.pcap
+# Temp files from captures (not the captures themselves)
+captures/*.tmp
 
 # macOS
 .DS_Store
